@@ -1,0 +1,1 @@
+WordからPowerPointを作成するアプリです。
