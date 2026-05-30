@@ -1,7 +1,7 @@
 # -*-coding: UTF-8 -*-
 from pptx import Presentation
 from pptx.util import Inches, Pt
-import re
+# import re
 from docx import Document
 from copy import deepcopy
 from pptx.enum.text import PP_ALIGN
@@ -24,21 +24,11 @@ class PowerPointGenerator:
         # スライドを生成し、１枚目を追加する。
         title_slide_layout = prs.slide_layouts[0]  # スライドのレイアウトの読み込み
         slide = prs.slides.add_slide(title_slide_layout)  # スライドの追加
-        txBox = slide.shapes.add_textbox(
-            Utility.centis(0.5),
-            Utility.centis(7),
-            Utility.centis(30),
-            Utility.centis(20)
-        )
 
-        text_frame = txBox.text_frame
-        p = text_frame.paragraphs[0]
-        p.text = title_text
-        p.font.size = Pt(54)
-        p.font.bold = True
-        p.font.name = "MS PGothic"
-        p.line_spacing = Pt(84)
-        p.alignment = PP_ALIGN.CENTER
+        title_placeholder = slide.placeholders[0]  # タイトルのプレースホルダーを取得
+
+        title_placeholder.text = title_text  # タイトルのテキストを設定
+
 
         ### 2行目以降を空行区切り
         
@@ -154,22 +144,22 @@ class Utility:
         p.font.name = font_name
         p.line_spacing = 1.5
 
-class WordReader:
+# class WordReader:
 
-    @staticmethod
-    def read_docx(path):
+#     @staticmethod
+#     def read_docx(path):
 
-        doc = Document(path)
+#         doc = Document(path)
         
-        texts = []
-        for para in doc.paragraphs:
+#         texts = []
+#         for para in doc.paragraphs:
 
-            text = para.text.strip()
+#             text = para.text.strip()
             
-            if text:
-                texts.append(text)
+#             if text:
+#                 texts.append(text)
 
-        return texts
+#         return texts
 
 
 class copy_powerpoint():
