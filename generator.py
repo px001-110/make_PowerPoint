@@ -1,10 +1,7 @@
 # -*-coding: UTF-8 -*-
 from pptx import Presentation
 from pptx.util import Inches, Pt
-# import re
 from docx import Document
-from copy import deepcopy
-from pptx.enum.text import PP_ALIGN
 
 class PowerPointGenerator:
            
@@ -58,14 +55,6 @@ class PowerPointGenerator:
 
             body_shape = slide.placeholders[1]
 
-            # txBox = slide.shapes.add_textbox(
-            #     Utility.centis(0.5),
-            #     Utility.centis(0.5),
-            #     Utility.centis(30),
-            #     Utility.centis(20)
-            # )
-            # text_frame = txBox.text_frame
-            # text_frame.clear()
 
             for i, line in enumerate(group):
                 if i == 0:
@@ -76,57 +65,6 @@ class PowerPointGenerator:
                     else:
                         p = body_shape.text_frame.add_paragraph()
                         p.text = line
-
-                # p.text = line
-                # p.font.size = Pt(54)
-                # p.font.bold = True
-                # p.font.name = "MS PGothic"
-                # p.line_spacing = Pt(84)
-                # p.alignment = PP_ALIGN.CENTER
-
-            # txBox.top = Inches(2)
-    
-
-
-
-# 修正しようとしたやつ
-    def move_slide(self, path, pres):
-        
-        src = Presentation(path)
-
-        for slide in src.slides:
-
-            blank_layout = pres.slide_layouts[6]
-
-            new_slide = pres.slides.add_slide(blank_layout)
-
-            for shape in slide.shapes:
-
-                el = deepcopy(shape.element)
-
-                new_slide.shapes._spTree.insert_element_before(
-                    el,
-                    'p:extLst'
-                )
-        
-        # alignment 修正
-            for old_shape, new_shape in zip(slide.shapes, new_slide.shapes):
-
-                if not old_shape.has_text_frame:
-                    continue
-
-                for old_p, new_p in zip(
-                    old_shape.text_frame.paragraphs,
-                    new_shape.text_frame.paragraphs
-                ):
-                    
-                    new_p.alignment = old_p.alignment
-
-            # # 背景コピー
-            # if slide.background:
-            #     new_slide.background.fill.fore_color.rgb = \
-            #         slide.background.fill.for_color.rgb
-
 
 
 class Utility:
@@ -143,24 +81,6 @@ class Utility:
         p.font.bold = is_bold
         p.font.name = font_name
         p.line_spacing = 1.5
-
-# class WordReader:
-
-#     @staticmethod
-#     def read_docx(path):
-
-#         doc = Document(path)
-        
-#         texts = []
-#         for para in doc.paragraphs:
-
-#             text = para.text.strip()
-            
-#             if text:
-#                 texts.append(text)
-
-#         return texts
-
 
 class copy_powerpoint():
     def _get_blank_slide_layout(pres):
