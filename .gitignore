@@ -1,0 +1,10 @@
+venv/
+__pychache__/
+
+uploads/
+generate/
+
+.env
+
+*.pptx
+*.docx

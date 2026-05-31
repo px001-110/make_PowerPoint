@@ -3,7 +3,7 @@ import time
 
 FOLDERS = [
     "uploads",
-    "outputs",
+    "generated",
     "temp"
 ]
 

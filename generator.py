@@ -44,8 +44,6 @@ class PowerPointGenerator:
         
         if current_group:
             groups.append(current_group)
-        
-        print(groups)  # グループ分けの確認
 
         ### グループごとにスライド作成
         for group in groups:
