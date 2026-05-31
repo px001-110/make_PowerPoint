@@ -1,8 +1,11 @@
 # make_PowerPoint
 
-複数のWordファイルから、PowerPointを自動生成するWebアプリです。
+Wordファイルから、PowerPointを自動生成するWebアプリです。
 
 PowerPoint資料作成の手間を軽減することを目的として開発しました。
+
+【デモURL】
+https://make-powerpoint.onrender.com/
 
 ---
 
