@@ -5,7 +5,7 @@ from docx import Document
 
 class PowerPointGenerator:
            
-    def make_PowerPoint(self, path, prs):
+    def make_powerpoint(self, path, prs):
 
         doc = Document(path)
 
@@ -64,26 +64,3 @@ class PowerPointGenerator:
                         p = body_shape.text_frame.add_paragraph()
                         p.text = line
 
-
-class Utility:
-
-    @staticmethod
-    def centis(length):
-        return Inches(length/2.54)
-
-# テキストボックスを作り、文字を入れる
-    @staticmethod
-    def add_text(p, msg, font_size, is_bold, font_name):
-        p.text = msg
-        p.font.size = Pt(font_size)
-        p.font.bold = is_bold
-        p.font.name = font_name
-        p.line_spacing = 1.5
-
-class copy_powerpoint():
-    def _get_blank_slide_layout(pres):
-        layout_items_count = [len(layout.placeholders)
-                              for layout in pres.slide_layouts]
-        min_items = min(layout_items_count)
-        blank_layout_id = layout_items_count.index(min_items)
-        return pres.slide_layouts[blank_layout_id]

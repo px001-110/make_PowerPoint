@@ -57,7 +57,7 @@ def upload():
 
     prs = Presentation("templates/template.pptx")
 
-    generetor = PowerPointGenerator()
+    generator = PowerPointGenerator()
 
     for file in upload_files:
 
@@ -72,10 +72,10 @@ def upload():
         file.save(str(save_path))
 
         try:            
-            generetor.make_PowerPoint(str(save_path), prs)
+            generator.make_powerpoint(str(save_path), prs)
 
         except Exception as e:
-            print(e)
+            app.logger.error(str(e))
 
     output_path = OUTPUT_DIR / f"{output_name}.pptx"
 
