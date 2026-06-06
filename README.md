@@ -1,4 +1,4 @@
-# make_PowerPoint
+# make_powerpoint
 
 Wordファイルから、PowerPointを自動生成するWebアプリです。
 
