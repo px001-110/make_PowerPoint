@@ -1,10 +1,13 @@
+# 生成ファイル、アップロードファイル除外
+generated/*.pptx
+uploads/*.docx
+uploads/*.pptx
+
+# 仮想環境除外
 venv/
-__pychache__/
-
-uploads/
-generate/
-
 .env
 
-*.pptx
-*.docx
+# python
+__pychache__/
+*.pyc
+
