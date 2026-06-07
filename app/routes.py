@@ -32,6 +32,9 @@ def index():
 
 @main.route("/upload", methods=["POST"])
 def upload():
+    print("FILES:", request.files)
+    print("FORM:", request.form)
+
 
     upload_files = request.files.getlist("files")
 
@@ -45,6 +48,10 @@ def upload():
 
     if not output_name:
         output_name = "自動生成"
+
+    print("upload_files:", len(upload_files))
+    print("output_name:", output_name)
+
 
     template_path = Path("app/templates/template.pptx")
 
